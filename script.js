@@ -430,7 +430,17 @@ function checkCollisions() {
              break; // Optional: Stop checking other lasers in this frame if player was hit once
         }
     }
-
+// --- Game Over Trigger ---
+function triggerGameOver() {
+    gameRunning = false; // Stop the current game loop
+    // Message is already set before calling this function
+    resetButton.textContent = "Retry?"; // <<< Change button text
+    resetButton.style.display = 'block'; // <<< Show the button
+    // REMOVE the setTimeout for automatic restart
+    // setTimeout(() => {
+    //     resetGame();
+    // }, 2500);
+}
     // 2. Player vs Laser
     lasers.forEach((laser, index) => {
         if (isColliding(player, laser)) {
